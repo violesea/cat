@@ -1,0 +1,50 @@
+;常用国家策略组 加强拦截广告 加强国内IP 加强国外IP
+[custom]
+;直连
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
+;ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+ruleset=DIRECT,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+ruleset=DIRECT,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list
+ruleset=DIRECT,http://xyz.hglpnm.top:8666/apps/sharingpath/violesea/share/%E7%9B%B4%E8%BF%9E.list
+
+
+;去广告
+;ruleset=🛑 广告拦截,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
+;ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+;ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+;ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list
+;ruleset=🛑 广告拦截,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list
+
+;代理
+ruleset=📺 Youtube,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+ruleset=📡 DIY,clash-classic:http://xyz.hglpnm.top:8666/apps/sharingpath/violesea/share/DIY.txt
+ruleset=♻️ 自动选择,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Synology/Synology.yaml
+ruleset=♻️ 自动选择,clash-classic:https://github.com/VirgilClyne/iRingo/raw/main/RuleSet/iCloud.PrivateRelay.yaml
+ruleset=♻️ 自动选择,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Synology/Synology.list
+ruleset=♻️ 自动选择,clash-classic:https://raw.githubusercontent.com/wgetnz/chatgpt-openclash/main/chatgpt.list
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.list
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+ruleset=🚀 节点选择,clash-classic:https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
+;ruleset=♻️ 自动选择,[]GEOIP,!CN
+;ruleset=DIRECT,[]GEOIP,LAN
+ruleset=DIRECT,[]GEOIP,CN
+
+ruleset=🍃 兜底策略,[]FINAL
+
+custom_proxy_group=🚀 节点选择`select`[]♻️ 自动选择`.*
+;custom_proxy_group=🧦Just`select`(JMS.*)`http://www.google.com`300,,50
+custom_proxy_group=♻️ 自动选择`url-test`(JMS.*|vmess|Hysteria2|trojan.*)`http://www.google.com`300,,50
+custom_proxy_group=🌈 Youtube自动选择`url-test`.*`http://www.youtube.com`300,,50
+custom_proxy_group=📡 DIY`select`.*801\.*.*
+custom_proxy_group=📺 Youtube`select`[]🌈 Youtube自动选择`.*
+custom_proxy_group=🛑 广告拦截`select`[]REJECT`[]DIRECT
+custom_proxy_group=🍃 兜底策略`select`[]🚀 节点选择`[]♻️ 自动选择`[]DIRECT
+enable_rule_generator=true
+overwrite_original_rules=true
